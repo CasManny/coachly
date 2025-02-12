@@ -21,8 +21,6 @@ const MeetingId = () => {
           {!isSetupComplete ? <MeetingSetup setIsSetupComplete={setIsSetupComplete} /> : <MeetingRoom />}
         </StreamTheme>
       </StreamCall>
-
-      <h1>Hello</h1>
     </main>
   );
 };
