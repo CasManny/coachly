@@ -19,8 +19,6 @@ const CallList = ({ type }: CallListProps) => {
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
   const router = useRouter();
 
-  if (isLoading) return <Loader />;
-
   const getCalls = () => {
     switch (type) {
       case "ended":
@@ -49,30 +47,34 @@ const CallList = ({ type }: CallListProps) => {
   const calls = getCalls();
   const noCallsMessage = getNoCallsMessage();
 
-  console.log(callRecordings)
-
   useEffect(() => {
     try {
       const fetchRecordings = async () => {
-        const callData = await Promise.all(callRecordings.map((meeting) => meeting.queryRecordings()))
-        const recordings = callData.filter(call => call.recordings.length > 0).flatMap(call => call.recordings)
-        setRecordings(recordings)
+        const callData = await Promise.all(
+          callRecordings.map((meeting) => meeting.queryRecordings())
+        );
+        const recordings = callData
+          .filter((call) => call.recordings.length > 0)
+          .flatMap((call) => call.recordings);
+        setRecordings(recordings);
+      };
+
+      if (type === "recordings") {
+        fetchRecordings();
       }
-  
-      if (type === 'recordings') {
-        fetchRecordings()
-      }
-      
     } catch (error) {
-      toast({title: "Try again Later"})
+      toast({ title: "Try again Later" });
     }
-  }, [type, recordings])
+  }, [type, recordings, callRecordings]);
+
+  if (isLoading) return <Loader />;
 
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? (
         calls.map((meeting: Call | CallRecording) => (
           <MeetingCard
+            id={(meeting as Call).id}
             key={(meeting as Call).id}
             icon={
               type === "ended"
@@ -108,7 +110,7 @@ const CallList = ({ type }: CallListProps) => {
           />
         ))
       ) : (
-        <h1 className="text-2xl font-bold text-black">{noCallsMessage}</h1>
+        <h1 className="text-2xl font-bold text-white">{noCallsMessage}</h1>
       )}
     </div>
   );

@@ -57,6 +57,7 @@ const MeetingTypeList = () => {
         router.push(`/meeting/${call.id}`);
       }
       toast({ title: "Meeting created" });
+      router.push(`/meeting/${call.id}`);
     } catch (error) {
       console.log(error);
       toast({
@@ -153,13 +154,13 @@ const MeetingTypeList = () => {
         className="text-center"
         title="Start an instant meeting"
         buttonText="Start Meeting"
-        handleClick={createMeeting}
+        handleClick={() => createMeeting()}
       />
       <MeetingModal
         isOpen={meetingState === "isJoiningMeeting"}
         onClose={() => setMeetingState(undefined)}
         className="text-center"
-        title="Type th Link here"
+        title="Type or paste the link to the Meeting"
         buttonText="Join Meeting"
         handleClick={() => router.push(values.link)}
       >

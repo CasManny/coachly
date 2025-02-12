@@ -1,12 +1,10 @@
 "use client";
-import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
 import { useGetCallById } from "@/hooks/use-getcall-byId";
 import { toast } from "@/hooks/use-toast";
 import { useUser } from "@clerk/nextjs";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 const Table = ({
   title,

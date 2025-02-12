@@ -1,16 +1,14 @@
-import { ReactNode } from "react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { ReactNode } from "react";
 
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+  DialogTitle
 } from "@/components/ui/dialog";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { Button } from "./ui/button";
 
 interface MeetingModalProps {
