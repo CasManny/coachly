@@ -1,7 +1,10 @@
+[Live Demo](https://coachly.vercel.app/)
+
 # Coachly
 
 Built with the latest Next.js and TypeScript, this project replicates Zoom, a widely used video conferencing tool. It enables users to securely log in, create meetings and access various meeting functionalities such as recording, screen sharing, and managing participants.
 
+![Homepage](/public/homepage.png)
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
